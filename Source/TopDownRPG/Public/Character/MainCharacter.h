@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Character/RPGCharacterBase.h"
-#include "AuraCharacter.generated.h"
+#include "MainCharacter.generated.h"
 
 /**
  * 
