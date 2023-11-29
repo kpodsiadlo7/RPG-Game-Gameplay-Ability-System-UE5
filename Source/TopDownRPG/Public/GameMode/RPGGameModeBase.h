@@ -3,17 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Character/RPGCharacterBase.h"
-#include "MainCharacter.generated.h"
+#include "GameFramework/GameModeBase.h"
+#include "RPGGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class TOPDOWNRPG_API AAuraCharacter : public ARPGCharacterBase
+class TOPDOWNRPG_API ARPGGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-
-	AAuraCharacter();
 	
 };

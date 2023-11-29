@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "RPGCharacterBase.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS(Abstract)
 class TOPDOWNRPG_API ARPGCharacterBase : public ACharacter
 {
@@ -22,4 +25,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
 
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* CameraBoom;
 };
