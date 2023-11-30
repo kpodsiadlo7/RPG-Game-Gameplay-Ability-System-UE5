@@ -3,6 +3,8 @@
 
 #include "..\..\Public\Enemy\MainEnemy.h"
 
+#include "AbilitySystem/RPGAbilitySystemComponent.h"
+#include "AbilitySystem/RPGAttributeSet.h"
 #include "TopDownRPG/TopDownRPG.h"
 
 AAuraEnemy::AAuraEnemy()
@@ -14,6 +16,11 @@ AAuraEnemy::AAuraEnemy()
 	Weapon->SetRenderCustomDepth(false);
 
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+
+	AbilitySystemComponent = CreateDefaultSubobject<URPGAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent->SetIsReplicated(true);
+
+	AttributeSet = CreateDefaultSubobject<URPGAttributeSet>("AttributeSet");
 }
 
 void AAuraEnemy::HighlightActor()
