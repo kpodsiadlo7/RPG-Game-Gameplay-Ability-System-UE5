@@ -24,10 +24,4 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TObjectPtr<USkeletalMeshComponent> Weapon;
-
-	UPROPERTY(VisibleAnywhere)
-	UCameraComponent* Camera;
-
-	UPROPERTY(VisibleAnywhere)
-	USpringArmComponent* CameraBoom;
 };

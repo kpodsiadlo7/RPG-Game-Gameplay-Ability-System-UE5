@@ -15,9 +15,12 @@ class TOPDOWNRPG_API AAuraEnemy : public ARPGCharacterBase, public IHighlightInt
 {
 	GENERATED_BODY()
 
-protected:
+public:
 	//IHighlightInterface
 	virtual void HighlightActor() override;
 	//IHighlightInterface
 	virtual void UnHighlightActor() override;
+
+	UPROPERTY(BlueprintReadOnly)
+	bool bHighlighted = false;
 };

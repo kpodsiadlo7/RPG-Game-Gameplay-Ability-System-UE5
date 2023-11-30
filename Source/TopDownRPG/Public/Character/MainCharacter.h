@@ -15,5 +15,10 @@ class TOPDOWNRPG_API AAuraCharacter : public ARPGCharacterBase
 	GENERATED_BODY()
 
 	AAuraCharacter();
-	
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* Camera;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* CameraBoom;
 };
