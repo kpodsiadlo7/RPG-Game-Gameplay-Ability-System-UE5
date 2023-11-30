@@ -16,8 +16,11 @@ class TOPDOWNRPG_API AAuraEnemy : public ARPGCharacterBase, public IHighlightInt
 	GENERATED_BODY()
 
 public:
+	AAuraEnemy();
+
 	//IHighlightInterface
 	virtual void HighlightActor() override;
+	void TurnOnAndOffCustomDepth(bool Highlight);
 	//IHighlightInterface
 	virtual void UnHighlightActor() override;
 

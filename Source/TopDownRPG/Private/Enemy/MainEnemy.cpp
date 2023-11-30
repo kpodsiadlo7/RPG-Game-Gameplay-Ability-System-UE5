@@ -3,12 +3,31 @@
 
 #include "..\..\Public\Enemy\MainEnemy.h"
 
+#include "TopDownRPG/TopDownRPG.h"
+
+AAuraEnemy::AAuraEnemy()
+{
+	GetMesh()->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
+	GetMesh()->SetRenderCustomDepth(false);
+	
+	Weapon->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
+	Weapon->SetRenderCustomDepth(false);
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+}
+
 void AAuraEnemy::HighlightActor()
 {
-	bHighlighted = true;
+	TurnOnAndOffCustomDepth(bHighlighted = true);
 }
 
 void AAuraEnemy::UnHighlightActor()
 {
-	bHighlighted = false;
+	TurnOnAndOffCustomDepth(bHighlighted = false);
+}
+
+void AAuraEnemy::TurnOnAndOffCustomDepth(bool Highlight)
+{
+	GetMesh()->SetRenderCustomDepth(Highlight);
+	Weapon->SetRenderCustomDepth(Highlight);
 }
