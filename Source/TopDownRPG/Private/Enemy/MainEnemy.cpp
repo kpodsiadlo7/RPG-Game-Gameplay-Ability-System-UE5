@@ -24,6 +24,12 @@ AAuraEnemy::AAuraEnemy()
 	AttributeSet = CreateDefaultSubobject<URPGAttributeSet>("AttributeSet");
 }
 
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	InitializeActorInfo();
+}
+
 void AAuraEnemy::HighlightActor()
 {
 	TurnOnAndOffCustomDepth(bHighlighted = true);
@@ -32,6 +38,11 @@ void AAuraEnemy::HighlightActor()
 void AAuraEnemy::UnHighlightActor()
 {
 	TurnOnAndOffCustomDepth(bHighlighted = false);
+}
+
+void AAuraEnemy::InitializeActorInfo()
+{
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 void AAuraEnemy::TurnOnAndOffCustomDepth(bool Highlight)

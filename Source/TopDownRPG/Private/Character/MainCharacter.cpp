@@ -3,9 +3,11 @@
 
 #include "..\..\Public\Character\MainCharacter.h"
 
+#include "AbilitySystemComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Player/RPGPlayerState.h"
 
 AAuraCharacter::AAuraCharacter()
 {
@@ -29,4 +31,30 @@ AAuraCharacter::AAuraCharacter()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
+}
+
+void AAuraCharacter::InitAbilityActorInfo()
+{
+	// Inicjalizacja dla serwera
+	// Pobieramy RPGPlayerState, któray chcemy powiązać z postacią. Atrybuty znajdują się w 'RPGPlayerState',
+	// dlatego musimy go najpierw pobrać
+	ARPGPlayerState* RPGPlayerState = GetPlayerState<ARPGPlayerState>();
+	check(RPGPlayerState);
+
+	RPGPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(RPGPlayerState, this);
+	AbilitySystemComponent = RPGPlayerState->GetAbilitySystemComponent();
+	AttributeSet = RPGPlayerState->GetAttributeSet();
+}
+
+// Metoda nadpisana 'override', która wykonuje się po zainizjalizowaniu kontrolera gracza
+void AAuraCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	InitAbilityActorInfo();
+}
+
+void AAuraCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	InitAbilityActorInfo();
 }
