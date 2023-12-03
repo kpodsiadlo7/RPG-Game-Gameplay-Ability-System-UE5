@@ -7,6 +7,8 @@
 #include "AttributeSet.h"
 #include "RPGAttributeSet.generated.h"
 
+// Dzięki temu makro mamy dostęp do getterów, setterów oraz inicjalizerów
+// 'ATTRIBUTE_ACCESSORS(URPGAttributeSet, Health)' - przykład użycia
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
 	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
 	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
